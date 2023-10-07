@@ -16,7 +16,6 @@ CLIENT = gspread.authorize(CREDS)
 
 SHEET = CLIENT.open('hangman_words').get_worksheet(0)
 
-words = SHEET.get_all_records()
+words = SHEET.col_values(1)
 
-for word_entry in words:
-    print(word_entry['Words'])
+print(words)
