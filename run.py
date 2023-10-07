@@ -30,6 +30,68 @@ def get_random_word():
 
     return random_word
 
+def draw_hangman(attempts):
+    hangman_graphics = [
+        """
+         ------
+         |    |
+              |
+              |
+              |
+              |
+        """,
+        """
+         ------
+         |    |
+         O    |
+              |
+              |
+              |
+        """,
+        """
+         ------
+         |    |
+         O    |
+         |    |
+              |
+              |
+        """,
+        """
+         ------
+         |    |
+         O    |
+        /|    |
+              |
+              |
+        """,
+        """
+         ------
+         |    |
+         O    |
+        /|\\   |
+              |
+              |
+        """,
+        """
+         ------
+         |    |
+         O    |
+        /|\\   |
+        /     |
+              |
+        """,
+        """
+         ------
+         |    |
+         O    |
+        /|\\   |
+        / \\   |
+              |
+        """
+    ]
+    
+    return hangman_graphics[attempts]
+
 def initialize_game(difficulty):
     """
     Initializes the Hangman game.
@@ -40,7 +102,6 @@ def initialize_game(difficulty):
     """
     random_word = get_random_word()
 
-    # Initialize the guessed word with underscores
     guessed_word = ['_'] * len(random_word)
 
     max_attempts = 0
@@ -71,6 +132,7 @@ def play_game(random_word, guessed_word, max_attempts):
     while current_attempts < max_attempts:
         print(' '.join(guessed_word))
         print(f"Guessed Letters: {' '.join(guessed_letters)}")
+        print(draw_hangman(current_attempts))
 
         guess = input("Enter a letter: ").lower()
 
@@ -97,7 +159,9 @@ def play_game(random_word, guessed_word, max_attempts):
             return True
 
     print(f"Sorry! The word was: {random_word}")
+    print(draw_hangman(current_attempts))
     return False
+
 
 def main():
     """
