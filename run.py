@@ -54,7 +54,47 @@ def initialize_game(difficulty):
 
     return random_word, guessed_word, max_attempts
 
-random_word, guessed_word, max_attempts = initialize_game('hard')
-print(random_word)
-print(' '.join(guessed_word))
-print(max_attempts)
+def play_game(random_word, guessed_word, max_attempts):
+    """
+    Plays a round of the game.
+
+    Arguments:
+        random_word (string): The word to guess.
+        guessed_word (list): The word with guessed letters.
+        max_attempts (interger): The maximum number of attempts.
+
+    Returns True if the game is won, otherwise returns false.
+    """
+    current_attempts = 0
+    guessed_letters = []
+
+    while current_attempts < max_attempts:
+        print(' '.join(guessed_word))
+        print(f"Guessed Letters: {' '.join(guessed_letters)}")
+
+        guess = input("Enter a letter: ").lower()
+
+        if len(guess) != 1 or not guess.isalpha():
+            print("Please enter a valid single letter.")
+            continue
+
+        if guess in guessed_letters:
+            print("You already guessed that letter.")
+            continue
+
+        guessed_letters.append(guess)
+
+        if guess in random_word:
+            for i, letter in enumerate(random_word):
+                if letter == guess:
+                    guessed_word[i] = guess
+        else:
+            current_attempts += 1
+            print(f"Incorrect guess! Attempts remaining: {max_attempts - current_attempts}")
+
+        if '_' not in guessed_word:
+            print(f"Congratulations! You guessed the word: {''.join(guessed_word)}")
+            return True
+
+    print(f"Sorry! The word was: {random_word}")
+    return False
