@@ -98,3 +98,25 @@ def play_game(random_word, guessed_word, max_attempts):
 
     print(f"Sorry! The word was: {random_word}")
     return False
+
+def main():
+    """
+    The main function that manages the execution of the Hangman game.
+
+    This function prompts the user to choose a difficulty level (easy, medium, or hard).
+    It then initializes the game with a random word, sets up the initial guessed word,
+    and establishes the maximum number of attempts based on the chosen difficulty.
+    The game loop is then started.
+    """
+    print("Welcome to Hangman!")
+    difficulty = input("Choose a difficulty (easy, medium, hard): ").lower()
+
+    if difficulty not in ['easy', 'medium', 'hard']:
+        print("Invalid difficulty level. Please choose from easy, medium, or hard.")
+        return
+
+    random_word, guessed_word, max_attempts = initialize_game(difficulty)
+    play_game(random_word, guessed_word, max_attempts)
+
+if __name__ == "__main__":
+    main()
