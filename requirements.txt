@@ -1,1 +1,3 @@
-# Your requirements go here
+gspread
+oauthlib
+google-auth
