@@ -162,7 +162,7 @@ def play_game(random_word, guessed_word, max_attempts):
 
         print(draw_hangman(current_attempts))
 
-        guess = input("Enter a letter (or type 'hint' for a hint): ").lower()
+        guess = input(f"Enter a letter{' (or type \'hint\' for a hint):' if not hint_used else ':'} ").lower()
 
         if guess == 'hint':
             hint_successful = hint(random_word, guessed_word, guessed_letters, max_attempts, hint_used)
