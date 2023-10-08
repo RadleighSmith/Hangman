@@ -2,7 +2,7 @@ import gspread
 import random
 import os
 import json
-import graphics
+import hangman_graphics
 from google.oauth2.service_account import Credentials
 
 def get_random_word():
