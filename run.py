@@ -128,7 +128,7 @@ def play_game(random_word, guessed_word, max_attempts):
 
     Returns True if the game is won, otherwise returns false.
     """
-        current_attempts = 0
+    current_attempts = 0
     guessed_word = ['_'] * len(random_word)
     guessed_letters = set()
 
