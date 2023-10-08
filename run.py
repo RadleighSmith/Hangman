@@ -137,9 +137,7 @@ def hint(random_word, guessed_word, guessed_letters, max_attempts, hint_used):
             guessed_word[i] = hint_letter
 
     guessed_letters.add(hint_letter)
-
     return True
-
 
 def play_game(random_word, guessed_word, max_attempts):
     """
@@ -155,10 +153,13 @@ def play_game(random_word, guessed_word, max_attempts):
     current_attempts = 0
     guessed_letters = set()
     hint_used = False
+    lives = max_attempts
 
     while current_attempts < max_attempts:
         print(' '.join(guessed_word))
         print(f"Guessed Letters: {' '.join(guessed_letters)}")
+        print(f"Lives Remaining: {lives}")
+
         print(draw_hangman(current_attempts))
 
         guess = input("Enter a letter (or type 'hint' for a hint): ").lower()
@@ -167,6 +168,7 @@ def play_game(random_word, guessed_word, max_attempts):
             hint_successful = hint(random_word, guessed_word, guessed_letters, max_attempts, hint_used)
             if hint_successful:
                 hint_used = True
+                lives -= 1
                 continue
             else:
                 current_attempts += 1
@@ -185,6 +187,7 @@ def play_game(random_word, guessed_word, max_attempts):
                         guessed_word[i] = guess
             else:
                 current_attempts += 1
+                lives -= 1
                 print(f"Incorrect guess! Attempts remaining: {max_attempts - current_attempts}")
 
             guessed_letters.add(guess)
@@ -194,9 +197,9 @@ def play_game(random_word, guessed_word, max_attempts):
                 return True
 
     print(f"Sorry! The word was: {random_word}")
-    draw_hangman(current_attempts)
+    print(draw_hangman(current_attempts))
     return False
-
+    
 def main():
     """
     The main function that manages the execution of the Hangman game.
