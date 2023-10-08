@@ -136,6 +136,8 @@ def hint(random_word, guessed_word, guessed_letters, max_attempts, hint_used):
         if letter == hint_letter:
             guessed_word[i] = hint_letter
 
+    guessed_letters.add(hint_letter)
+
     return True
 
 
@@ -157,7 +159,7 @@ def play_game(random_word, guessed_word, max_attempts):
     while current_attempts < max_attempts:
         print(' '.join(guessed_word))
         print(f"Guessed Letters: {' '.join(guessed_letters)}")
-        draw_hangman(current_attempts)
+        print(draw_hangman(current_attempts))
 
         guess = input("Enter a letter (or type 'hint' for a hint): ").lower()
 
