@@ -128,7 +128,7 @@ def play_game(random_word, guessed_word, max_attempts):
 
     Returns True if the game is won, otherwise returns false.
     """
-    current_attempts = 0
+        current_attempts = 0
     guessed_word = ['_'] * len(random_word)
     guessed_letters = set()
 
@@ -137,29 +137,36 @@ def play_game(random_word, guessed_word, max_attempts):
         print(f"Guessed Letters: {' '.join(guessed_letters)}")
         print(draw_hangman(current_attempts))
 
-        guess = input("Enter a letter: ").lower()
+        guess = input("Enter a letter (or type 'hint' for a hint): ").lower()
 
-        if len(guess) != 1 or not guess.isalpha():
-            print("Please enter a valid single letter.")
-            continue
-
-        if guess in guessed_letters:
-            print("You already guessed that letter.")
-            continue
-
-        if guess in random_word:
-            for i, letter in enumerate(random_word):
-                if letter == guess:
-                    guessed_word[i] = guess
+        if guess == 'hint':
+            hint_successful = hint(random_word, guessed_word, guessed_letters, max_attempts)
+            if hint_successful:
+                continue
+            else:
+                current_attempts += 1
         else:
-            current_attempts += 1
-            print(f"Incorrect guess! Attempts remaining: {max_attempts - current_attempts}")
+            if len(guess) != 1 or not guess.isalpha():
+                print("Please enter a valid single letter.")
+                continue
 
-        guessed_letters.add(guess)
+            if guess in guessed_letters:
+                print("You already guessed that letter.")
+                continue
 
-        if '_' not in guessed_word:
-            print(f"Congratulations! You guessed the word: {''.join(guessed_word)}")
-            return True
+            if guess in random_word:
+                for i, letter in enumerate(random_word):
+                    if letter == guess:
+                        guessed_word[i] = guess
+            else:
+                current_attempts += 1
+                print(f"Incorrect guess! Attempts remaining: {max_attempts - current_attempts}")
+
+            guessed_letters.add(guess)
+
+            if '_' not in guessed_word:
+                print(f"Congratulations! You guessed the word: {''.join(guessed_word)}")
+                return True
 
     print(f"Sorry! The word was: {random_word}")
     print(draw_hangman(current_attempts))
