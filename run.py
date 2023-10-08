@@ -110,7 +110,7 @@ def initialize_game(difficulty):
 
     if difficulty == 'easy':
         max_attempts = 6
-    elif difficulty == 'mediun':
+    elif difficulty == 'medium':
         max_attempts = 5
     elif difficulty == 'hard':
         max_attempts = 4
