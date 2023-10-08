@@ -1,5 +1,6 @@
 import gspread
 import random
+import os
 from google.oauth2.service_account import Credentials
 
 def get_random_word():
@@ -15,8 +16,8 @@ def get_random_word():
         "https://www.googleapis.com/auth/drive"
     ]
 
-    CREDS = Credentials.from_service_account_file(
-        'words.json',
+    CREDS = Credentials.from_service_account_info(
+        json.loads(os.environ.get('CREDS')),
         scopes=SCOPE
     )
 
