@@ -142,12 +142,6 @@ def play_game(random_word, guessed_word, max_attempts):
             print("Please enter a valid single letter.")
             continue
 
-        if guess in guessed_letters:
-            print("You already guessed that letter.")
-            continue
-
-        guessed_letters.append(guess)
-
         if guess in random_word:
             for i, letter in enumerate(random_word):
                 if letter == guess:
@@ -155,6 +149,11 @@ def play_game(random_word, guessed_word, max_attempts):
         else:
             current_attempts += 1
             print(f"Incorrect guess! Attempts remaining: {max_attempts - current_attempts}")
+
+        if guess in guessed_letters:
+            print("You already guessed that letter.")
+        else:
+            guessed_letters.append(guess)
 
         if '_' not in guessed_word:
             print(f"Congratulations! You guessed the word: {''.join(guessed_word)}")
