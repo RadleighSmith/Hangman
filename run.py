@@ -175,14 +175,41 @@ def main():
     The game loop is then started.
     """
     print("Welcome to Hangman!")
-    difficulty = input("Choose a difficulty (easy, medium, hard): ").lower()
+    while True:
+        print("\nMenu:")
+        print("1. Play")
+        print("2. Instrucions")
+        print("3. Quit")
 
-    if difficulty not in ['easy', 'medium', 'hard']:
-        print("Invalid difficulty level. Please choose from easy, medium, or hard.")
-        return
+        choice = input("Enter your choice (1/2/3): ")
 
-    random_word, guessed_word, max_attempts = initialize_game(difficulty)
-    play_game(random_word, guessed_word, max_attempts)
+        if choice == '1':
+            print("\nDifficulty Levels:")
+            print("e - Easy")
+            print("m - Medium")
+            print("h - Hard")
+            difficulty = input("Choose a difficulty (e/m/h): ").lower()
+
+            if difficulty not in ['e', 'm', 'h']:
+                print("Invalid difficulty level. Please choose from e, m, or h.")
+                continue
+
+            if difficulty == 'e':
+                difficulty = 'easy'
+            elif difficulty == 'm':
+                difficulty = 'medium'
+            else:
+                difficulty = 'hard'
+
+            random_word, guessed_word, max_attempts = initialize_game(difficulty)
+            play_game(random_word, guessed_word, max_attempts)
+        elif choice == '2':
+            print("\nInstructions:")
+            print("PLACEHOLDER INSTRUCTIONS THIS IS A TEST")  
+        elif choice == '3':
+            break  
+        else:
+            print("Invalid choice. Please enter 1, 2, or 3.")
 
 if __name__ == "__main__":
     main()
