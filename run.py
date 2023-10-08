@@ -2,7 +2,6 @@ import gspread
 import random
 import os
 import json
-import hangman_graphics
 from google.oauth2.service_account import Credentials
 
 def get_random_word():
@@ -33,6 +32,68 @@ def get_random_word():
 
     return random_word
 
+def draw_hangman(attempts):
+    hangman_graphics = [
+        """
+         ------
+         |    |
+              |
+              |
+              |
+              |
+        """,
+        """
+         ------
+         |    |
+         O    |
+              |
+              |
+              |
+        """,
+        """
+         ------
+         |    |
+         O    |
+         |    |
+              |
+              |
+        """,
+        """
+         ------
+         |    |
+         O    |
+        /|    |
+              |
+              |
+        """,
+        """
+         ------
+         |    |
+         O    |
+        /|\\   |
+              |
+              |
+        """,
+        """
+         ------
+         |    |
+         O    |
+        /|\\   |
+        /     |
+              |
+        """,
+        """
+         ------
+         |    |
+         O    |
+        /|\\   |
+        / \\   |
+              |
+        """
+    ]
+    
+    return hangman_graphics[attempts]
+
 def initialize_game(difficulty):
     """
     Initializes the Hangman game.
@@ -56,6 +117,28 @@ def initialize_game(difficulty):
 
     return random_word, guessed_word, max_attempts
 
+def hint(random_word, guessed_word, guessed_letters, max_attempts):
+    """
+    Randomly selects an unguessed letter from the word to provide as a hint.
+    If a hint is provided, the corresponding letter is revealed in the guessed word.
+    """
+    unused_letters = set(random_word) - guessed_letters
+
+    if unused_letters:
+        hint_letter = random.choice(list(unused_letters))
+        guessed_letters.add(hint_letter)
+
+        for i, letter in enumerate(random_word):
+            if letter == hint_letter:
+                guessed_word[i] = hint_letter
+
+        print(f"\nHint: The letter '{hint_letter}' is in the word.")
+        return True
+    else:
+        print("\nNo more hints available.")
+        return False
+
+
 def play_game(random_word, guessed_word, max_attempts):
     """
     Plays a round of the game.
@@ -74,7 +157,7 @@ def play_game(random_word, guessed_word, max_attempts):
     while current_attempts < max_attempts:
         print(' '.join(guessed_word))
         print(f"Guessed Letters: {' '.join(guessed_letters)}")
-        hangman_graphics.draw_hangman(current_attempts)
+        print(draw_hangman(current_attempts))
 
         guess = input("Enter a letter (or type 'hint' for a hint): ").lower()
 
@@ -110,7 +193,6 @@ def play_game(random_word, guessed_word, max_attempts):
     print(f"Sorry! The word was: {random_word}")
     print(draw_hangman(current_attempts))
     return False
-
 
 def main():
     """
