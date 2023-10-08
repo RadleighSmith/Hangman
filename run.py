@@ -117,26 +117,26 @@ def initialize_game(difficulty):
 
     return random_word, guessed_word, max_attempts
 
-def hint(random_word, guessed_word, guessed_letters, max_attempts):
+def hint(random_word, guessed_word, guessed_letters, max_attempts, hint_used):
     """
     Randomly selects an unguessed letter from the word to provide as a hint.
     If a hint is provided, the corresponding letter is revealed in the guessed word.
+
+    A hint costs a life and can only be used if there is more than 1 letter remaining and
+    if the hint hasn't been used before in the game.
     """
-    unused_letters = set(random_word) - guessed_letters
-
-    if unused_letters:
-        hint_letter = random.choice(list(unused_letters))
-        guessed_letters.add(hint_letter)
-
-        for i, letter in enumerate(random_word):
-            if letter == hint_letter:
-                guessed_word[i] = hint_letter
-
-        print(f"\nHint: The letter '{hint_letter}' is in the word.")
-        return True
-    else:
-        print("\nNo more hints available.")
+    if hint_used or guessed_word.count('_') <= 1:
+        print("Sorry, you can't use a hint right now.")
         return False
+
+    unguessed_letters = [letter for letter in random_word if letter not in guessed_letters]
+    hint_letter = random.choice(unguessed_letters)
+
+    for i, letter in enumerate(random_word):
+        if letter == hint_letter:
+            guessed_word[i] = hint_letter
+
+    return True
 
 
 def play_game(random_word, guessed_word, max_attempts):
@@ -151,19 +151,20 @@ def play_game(random_word, guessed_word, max_attempts):
     Returns True if the game is won, otherwise returns false.
     """
     current_attempts = 0
-    guessed_word = ['_'] * len(random_word)
     guessed_letters = set()
+    hint_used = False
 
     while current_attempts < max_attempts:
         print(' '.join(guessed_word))
         print(f"Guessed Letters: {' '.join(guessed_letters)}")
-        print(draw_hangman(current_attempts))
+        draw_hangman(current_attempts)
 
         guess = input("Enter a letter (or type 'hint' for a hint): ").lower()
 
         if guess == 'hint':
-            hint_successful = hint(random_word, guessed_word, guessed_letters, max_attempts)
+            hint_successful = hint(random_word, guessed_word, guessed_letters, max_attempts, hint_used)
             if hint_successful:
+                hint_used = True
                 continue
             else:
                 current_attempts += 1
@@ -191,7 +192,7 @@ def play_game(random_word, guessed_word, max_attempts):
                 return True
 
     print(f"Sorry! The word was: {random_word}")
-    print(draw_hangman(current_attempts))
+    draw_hangman(current_attempts)
     return False
 
 def main():
