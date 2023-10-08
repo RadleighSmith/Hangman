@@ -178,7 +178,7 @@ def main():
     while True:
         print("\nMenu:")
         print("1. Play")
-        print("2. Instrucions")
+        print("2. Instructions")
         print("3. Quit")
 
         choice = input("Enter your choice (1/2/3): ")
