@@ -76,6 +76,7 @@ def hint(random_word, guessed_word, guessed_letters, max_attempts, hint_used):
             guessed_word[i] = hint_letter
 
     guessed_letters.add(hint_letter)
+    lives -= 1
     return True
 
 def replay():
