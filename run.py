@@ -94,7 +94,7 @@ def replay():
         elif replay_choice == 'n':
             return False
         else:
-            print("Invalid choice. Please enter 'Y' or 'N'.")
+            print("Invalid choice. Please enter 'y' or 'n'.")
 
 def play_game(random_word, guessed_word, max_attempts):
     """
