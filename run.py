@@ -2,6 +2,7 @@ import gspread
 import random
 import os
 import json
+import graphics
 from google.oauth2.service_account import Credentials
 
 def get_random_word():
@@ -33,65 +34,6 @@ def get_random_word():
     return random_word
 
 def draw_hangman(attempts):
-    hangman_graphics = [
-        """
-         ------
-         |    |
-              |
-              |
-              |
-              |
-        """,
-        """
-         ------
-         |    |
-         O    |
-              |
-              |
-              |
-        """,
-        """
-         ------
-         |    |
-         O    |
-         |    |
-              |
-              |
-        """,
-        """
-         ------
-         |    |
-         O    |
-        /|    |
-              |
-              |
-        """,
-        """
-         ------
-         |    |
-         O    |
-        /|\\   |
-              |
-              |
-        """,
-        """
-         ------
-         |    |
-         O    |
-        /|\\   |
-        /     |
-              |
-        """,
-        """
-         ------
-         |    |
-         O    |
-        /|\\   |
-        / \\   |
-              |
-        """
-    ]
-    
     return hangman_graphics[attempts]
 
 def initialize_game(difficulty):
