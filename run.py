@@ -34,7 +34,7 @@ def get_random_word():
     return random_word
 
 def draw_hangman(attempts):
-    return hangman_graphics[attempts]
+    return graphics.hangman_graphics[attempts]
 
 def initialize_game(difficulty):
     """
