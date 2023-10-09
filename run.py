@@ -2,7 +2,7 @@ import gspread
 import random
 import os
 import json
-import graphics
+from graphics import hangman_title, draw_hangman
 from google.oauth2.service_account import Credentials
 
 def get_random_word():
@@ -32,9 +32,6 @@ def get_random_word():
     random_word = random.choice(words)
 
     return random_word
-
-def draw_hangman(attempts):
-    return graphics.hangman_graphics[attempts]
 
 def initialize_game(difficulty):
     """
@@ -117,7 +114,7 @@ def play_game(random_word, guessed_word, max_attempts):
         print(f"Guessed Letters: {' '.join(guessed_letters)}")
         print(f"Lives Remaining: {lives}")
 
-        print(draw_hangman(current_attempts))
+        draw_hangman(current_attempts)
 
         if not hint_used:
             guess = input("Enter a letter (or type 'hint' for a hint): ").lower()
@@ -157,7 +154,7 @@ def play_game(random_word, guessed_word, max_attempts):
                 return replay()
 
     print(f"Sorry! The word was: {random_word}")
-    print(draw_hangman(current_attempts))
+    draw_hangman(current_attempts)
     return replay()
 
 def main():
@@ -169,7 +166,7 @@ def main():
     and establishes the maximum number of attempts based on the chosen difficulty.
     The game loop is then started.
     """
-    print("Welcome to Hangman!")
+    hangman_title()
     while True:
         print("\nMenu:")
         print("1. Play")
