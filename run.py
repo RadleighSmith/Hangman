@@ -150,9 +150,11 @@ def play_game(random_word, guessed_word, max_attempts):
             guessed_letters.add(guess)
 
             if '_' not in guessed_word:
+                win_title()
                 print(f"Congratulations! You guessed the word: {''.join(guessed_word)}")
                 return replay()
 
+    lose_title()
     print(f"Sorry! The word was: {random_word}")
     draw_hangman(current_attempts)
     return replay()
