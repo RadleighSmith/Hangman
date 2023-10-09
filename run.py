@@ -141,12 +141,12 @@ def hint(random_word, guessed_word, guessed_letters, max_attempts, hint_used):
 
 def replay():
     """
-    Asks the player if they want to play again, only allowing 'Y' or 'N'.
+    Asks the player if they want to play again, only allowing 'y' or 'n'.
 
     Returns True if the player wants to play again, False otherwise.
     """
     while True:
-        replay_choice = input("Do you want to play again? (Y/N): ").strip().lower()
+        replay_choice = input("Do you want to play again? (y/n): ").strip().lower()
         if replay_choice == 'y':
             return True
         elif replay_choice == 'n':
@@ -217,7 +217,7 @@ def play_game(random_word, guessed_word, max_attempts):
     print(f"Sorry! The word was: {random_word}")
     print(draw_hangman(current_attempts))
     return replay()
-    
+
 def main():
     """
     The main function that manages the execution of the Hangman game.
