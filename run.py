@@ -93,6 +93,39 @@ def replay():
         else:
             print("Invalid choice. Please enter 'y' or 'n'.")
 
+def show_instructions():
+    """
+    Displays game instructions and waits for user to press Enter.
+    """
+    instructions = """
+    **Hangman Game Instructions**
+
+    Objective:
+    Guess the hidden word before you run out of attempts.
+
+    1. Difficulty Levels:
+    - "e" for Easy (6 attempts).
+    - "m" for Medium (5 attempts).
+    - "h" for Hard (4 attempts).
+
+    2. Guessing a Letter:
+    - Enter a letter (a to z) and press Enter.
+    - If the letter is in the word, it will be revealed.
+    - If not, you lose a life.
+    - If you guess the word before losing your lives, YOU WIN!
+    - If you run out of lives, it's GAME OVER!
+
+    3. Hints:
+    - Type "hint" to get a hint; however, this costs a life.
+    - A random unrevealed letter will be shown.
+    - Use it wisely! You cannot use it on your last life!
+
+    4. Enjoy the Game!
+    """
+
+    print(instructions)
+    input("Press Enter to return to the main menu...")
+
 def play_game(random_word, guessed_word, max_attempts):
     """
     Plays a round of the game.
@@ -198,8 +231,7 @@ def main():
             random_word, guessed_word, max_attempts = initialize_game(difficulty)
             play_game(random_word, guessed_word, max_attempts)
         elif choice == '2':
-            print("\nInstructions:")
-            print("PLACEHOLDER INSTRUCTIONS THIS IS A TEST")  
+            show_instructions()
         elif choice == '3':
             break  
         else:
