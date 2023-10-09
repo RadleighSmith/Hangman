@@ -2,14 +2,14 @@
 class Colors:
     RED = '\033[91m'
     GREEN = '\033[92m'
-    BLUE = '\u001b[34m'
+    ORANGE = '\033[1;33m'
     NORMAL = '\033[0m'
 
 def hangman_title():
     """
     Title on main menu
     """
-    print(f"""{Colors.GREEN}
+    print(f"""{Colors.ORANGE}
 ██   ██  █████  ███    ██  ██████  ███    ███  █████  ███    ██ 
 ██   ██ ██   ██ ████   ██ ██       ████  ████ ██   ██ ████   ██ 
 ███████ ███████ ██ ██  ██ ██   ███ ██ ████ ██ ███████ ██ ██  ██ 
@@ -21,7 +21,7 @@ def win_title():
     """
     Title on win screen
     """
-    print(f"""{Colors.BLUE}
+    print(f"""{Colors.GREEN}
 ██     ██ ███████ ██      ██          ██████   ██████  ███    ██ ███████ ██ 
 ██     ██ ██      ██      ██          ██   ██ ██    ██ ████   ██ ██      ██ 
 ██  █  ██ █████   ██      ██          ██   ██ ██    ██ ██ ██  ██ █████   ██ 
