@@ -76,7 +76,6 @@ def hint(random_word, guessed_word, guessed_letters, max_attempts, hint_used):
             guessed_word[i] = hint_letter
 
     guessed_letters.add(hint_letter)
-    lives -= 1
     return True
 
 def replay():
@@ -156,7 +155,7 @@ def play_game(random_word, guessed_word, max_attempts):
             guess = input("Enter a letter: ").lower()
 
         if guess == 'hint':
-            hint_successful = hint(random_word, guessed_word, guessed_letters, max_attempts, hint_used)
+            hint_successful = hint(random_word, guessed_word, guessed_letters, hint_used, lives)
             if hint_successful:
                 hint_used = True
                 lives -= 1
