@@ -139,6 +139,21 @@ def hint(random_word, guessed_word, guessed_letters, max_attempts, hint_used):
     guessed_letters.add(hint_letter)
     return True
 
+def replay():
+    """
+    Asks the player if they want to play again, only allowing 'Y' or 'N'.
+
+    Returns True if the player wants to play again, False otherwise.
+    """
+    while True:
+        replay_choice = input("Do you want to play again? (Y/N): ").strip().lower()
+        if replay_choice == 'y':
+            return True
+        elif replay_choice == 'n':
+            return False
+        else:
+            print("Invalid choice. Please enter 'Y' or 'N'.")
+
 def play_game(random_word, guessed_word, max_attempts):
     """
     Plays a round of the game.
@@ -197,11 +212,11 @@ def play_game(random_word, guessed_word, max_attempts):
 
             if '_' not in guessed_word:
                 print(f"Congratulations! You guessed the word: {''.join(guessed_word)}")
-                return True
+                return replay()
 
     print(f"Sorry! The word was: {random_word}")
     print(draw_hangman(current_attempts))
-    return False
+    return replay()
     
 def main():
     """
