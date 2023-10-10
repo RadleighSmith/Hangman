@@ -6,6 +6,7 @@ class Colors:
     ORANGE = '\033[1;33m'
     NORMAL = '\033[0m'
 
+
 def hangman_title():
     """
     Title on main menu
@@ -17,6 +18,7 @@ def hangman_title():
 ██   ██ ██   ██ ██  ██ ██ ██    ██ ██  ██  ██ ██   ██ ██  ██ ██ 
 ██   ██ ██   ██ ██   ████  ██████  ██      ██ ██   ██ ██   ████ 
  {Colors.NORMAL}""")
+
 
 def win_title():
     """
@@ -37,6 +39,7 @@ def win_title():
        ██     ██████   ██████      ██████  ██ ██████      ██    ██          
  {Colors.NORMAL}""")
 
+
 def lose_title():
     """
     Title on lose screen
@@ -49,63 +52,71 @@ def lose_title():
  ██████  ██   ██ ██      ██ ███████      ██████    ████   ███████ ██   ██       
  {Colors.NORMAL}""")
 
+
 def draw_hangman(attempts):
     hangman_graphics = [
-        """
+        f"""{Colors.CYAN}
          ------
          |    |
               |
               |
               |
               |
+        {Colors.NORMAL}
         """,
-        """
-         ------
-         |    |
-         O    |
-              |
-              |
-              |
-        """,
-        """
+        f"""{Colors.CYAN}
          ------
          |    |
          O    |
+              |
+              |
+              |
+        {Colors.NORMAL}
+        """,
+        f"""{Colors.CYAN}
+         ------
+         |    |
+         O    |
          |    |
               |
               |
+        {Colors.NORMAL}
         """,
-        """
+        f"""{Colors.CYAN}
          ------
          |    |
          O    |
         /|    |
               |
               |
+        {Colors.NORMAL}
         """,
-        """
+        f"""{Colors.CYAN}
          ------
          |    |
          O    |
         /|\\   |
               |
               |
+        {Colors.NORMAL}
         """,
-        """
+        f"""{Colors.ORANGE}
          ------
          |    |
          O    |
         /|\\   |
         /     |
               |
+        {Colors.NORMAL}
         """,
-        """
+        f"""{Colors.RED}
          ------
          |    |
          O    |
         /|\\   |
         / \\   |
               |
+        {Colors.NORMAL}
         """
     ]
 
