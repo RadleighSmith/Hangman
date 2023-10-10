@@ -149,12 +149,11 @@ def play_game(random_word, guessed_word, max_attempts, difficulty):
     current_attempts = 0
     guessed_letters = set()
     hint_used = False
-    lives = max_attempts - current_attempts
 
     while current_attempts < max_attempts:
         print(' '.join(guessed_word))
         print(f"{Colors.CYAN}Guessed Letters: {' '.join(guessed_letters)}{Colors.NORMAL}")
-        print(f"{Colors.CYAN}Lives Remaining:{Colors.RED} {lives}{Colors.NORMAL}")
+        print(f"{Colors.CYAN}Lives Remaining:{Colors.RED} {max_attempts - current_attempts}{Colors.NORMAL}")
 
         draw_hangman(current_attempts, difficulty)
 
