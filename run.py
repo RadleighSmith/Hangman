@@ -60,7 +60,7 @@ def initialize_game(difficulty):
     return random_word, guessed_word, max_attempts, difficulty
 
 
-def hint(random_word, guessed_word, guessed_letters, hint_used, lives):
+def hint(random_word, guessed_word, guessed_letters, hint_used):
     """
     Randomly selects an unguessed letter from the word to provide as a hint.
     If a hint is provided, the corresponding letter is revealed in the guessed
@@ -70,7 +70,7 @@ def hint(random_word, guessed_word, guessed_letters, hint_used, lives):
     remaining and if the hint hasn't been used before in the game.
     """
     if hint_used or guessed_word.count('_') <= 1:
-        print(f"{Colors.RED}Sorry, you can't use a hint right now.{Colors.NORMAL}")
+        print("Sorry, you can't use a hint right now.")
         return False
 
     unguessed_letters = [letter for letter in random_word if letter not in guessed_letters]
@@ -81,7 +81,6 @@ def hint(random_word, guessed_word, guessed_letters, hint_used, lives):
             guessed_word[i] = hint_letter
 
     guessed_letters.add(hint_letter)
-    lives -= 1
     return True
 
 
@@ -164,13 +163,10 @@ def play_game(random_word, guessed_word, max_attempts, difficulty):
             guess = input(f"{Colors.CYAN}Enter a letter: {Colors.NORMAL}").lower()
 
         if guess == 'hint':
-            hint_successful = hint(random_word, guessed_word, guessed_letters, max_attempts, hint_used, lives)
+            hint_successful = hint(random_word, guessed_word, guessed_letters, hint_used)
             if hint_successful:
                 hint_used = True
-                lives -= 1
-                continue
-            else:
-                current_attempts += 1
+                current_attempts += 1 
         else:
             if len(guess) != 1 or not guess.isalpha():
                 print(f"{Colors.RED}Please enter a valid single letter.{Colors.NORMAL}")
