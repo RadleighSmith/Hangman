@@ -152,15 +152,15 @@ def play_game(random_word, guessed_word, max_attempts):
 
     while current_attempts < max_attempts:
         print(' '.join(guessed_word))
-        print(f"Guessed Letters: {' '.join(guessed_letters)}")
-        print(f"Lives Remaining: {lives}")
+        print(f"{Colors.CYAN}Guessed Letters: {' '.join(guessed_letters)}{Colors.NORMAL}")
+        print(f"{Colors.CYAN}Lives Remaining:{Colors.RED} {lives}{Colors.NORMAL}")
 
         draw_hangman(current_attempts)
 
         if not hint_used:
-            guess = input("Enter a letter (or type 'hint' for a hint): ").lower()
+            guess = input(f"{Colors.CYAN}Enter a letter (or type 'hint' for a hint): {Colors.NORMAL}").lower()
         else:
-            guess = input("Enter a letter: ").lower()
+            guess = input(f"{Colors.CYAN}Enter a letter: {Colors.NORMAL}").lower()
 
         if guess == 'hint':
             hint_successful = hint(random_word, guessed_word, guessed_letters, hint_used, lives)
@@ -172,17 +172,18 @@ def play_game(random_word, guessed_word, max_attempts):
                 current_attempts += 1
         else:
             if len(guess) != 1 or not guess.isalpha():
-                print("Please enter a valid single letter.")
+                print(f"{Colors.RED}Please enter a valid single letter.{Colors.NORMAL}")
                 continue
 
             if guess in guessed_letters:
-                print("You already guessed that letter.")
+                print(f"{Colors.RED}You already guessed that letter.{Colors.NORMAL}")
                 continue
 
             if guess in random_word:
                 for i, letter in enumerate(random_word):
                     if letter == guess:
                         guessed_word[i] = guess
+                print(f"{Colors.GREEN}Well done! You guessed a correct letter.{Colors.NORMAL}")
             else:
                 current_attempts += 1
                 lives -= 1
