@@ -60,7 +60,7 @@ def initialize_game(difficulty):
     return random_word, guessed_word, max_attempts, difficulty
 
 
-def hint(random_word, guessed_word, guessed_letters, hint_used):
+def hint(random_word, guessed_word, guessed_letters, hint_used, max_attempts):
     """
     Randomly selects an unguessed letter from the word to provide as a hint.
     If a hint is provided, the corresponding letter is revealed in the guessed
@@ -70,18 +70,19 @@ def hint(random_word, guessed_word, guessed_letters, hint_used):
     remaining and if the hint hasn't been used before in the game.
     """
     if hint_used or guessed_word.count('_') <= 1:
-        print("Sorry, you can't use a hint right now.")
-        return False
+        print(f"{Colors.RED}Sorry, you can't use a hint right now.{Colors.NORMAL}")
+        return False, max_attempts
 
-    unguessed_letters = [letter for letter in random_word if letter not in guessed_letters]
-    hint_letter = random.choice(unguessed_letters)
+    unguessed_letters = [i for i, letter in enumerate(guessed_word) if letter == '_']
+    hint_index = random.choice(unguessed_letters)
+    hint_letter = random_word[hint_index]
 
-    for i, letter in enumerate(random_word):
-        if letter == hint_letter:
-            guessed_word[i] = hint_letter
-
+    guessed_word[hint_index] = hint_letter
     guessed_letters.add(hint_letter)
-    return True
+
+    max_attempts -= 1
+
+    return guessed_word, max_attempts
 
 
 def replay():
@@ -163,10 +164,11 @@ def play_game(random_word, guessed_word, max_attempts, difficulty):
             guess = input(f"{Colors.CYAN}Enter a letter: {Colors.NORMAL}").lower()
 
         if guess == 'hint':
-            hint_successful = hint(random_word, guessed_word, guessed_letters, hint_used)
-            if hint_successful:
+            guessed_word, max_attempts = hint(random_word, guessed_word, guessed_letters, hint_used, max_attempts)
+            if guessed_word:
                 hint_used = True
-                current_attempts += 1 
+                current_attempts += 1
+
         else:
             if len(guess) != 1 or not guess.isalpha():
                 print(f"{Colors.RED}Please enter a valid single letter.{Colors.NORMAL}")
