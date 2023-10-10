@@ -234,8 +234,10 @@ def main():
             else:
                 difficulty = 'hard'
 
-            random_word, guessed_word, max_attempts, difficulty = initialize_game(difficulty)
-            play_game(random_word, guessed_word, max_attempts, difficulty)
+            play_result = play_game(random_word, guessed_word, max_attempts, difficulty)
+            if not play_result:
+                break
+            
         elif choice == '2':
             show_instructions()
         elif choice == '3':
