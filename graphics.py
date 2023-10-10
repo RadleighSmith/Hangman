@@ -120,12 +120,9 @@ def lose_title():
 
 
 def draw_hangman(attempts, difficulty):
-    if difficulty == 'medium' and attempts <= 1:
-        start_index = 5
-    elif difficulty == 'hard' and attempts <= 2:
-        start_index = 4
+    if difficulty == 'medium':
+        print(HANGMAN_GRAPHICS[1 + attempts])
+    elif difficulty == 'hard':
+        print(HANGMAN_GRAPHICS[2 + attempts]) 
     else:
-        start_index = 0
-
-    for i in range(start_index, len(HANGMAN_GRAPHICS)):
-        print(HANGMAN_GRAPHICS[i])
+        print(HANGMAN_GRAPHICS[attempts])
