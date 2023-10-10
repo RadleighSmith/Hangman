@@ -70,7 +70,7 @@ def hint(random_word, guessed_word, guessed_letters, max_attempts, hint_used):
     remaining and if the hint hasn't been used before in the game.
     """
     if hint_used or guessed_word.count('_') <= 1:
-        print("Sorry, you can't use a hint right now.")
+        print(f"{Colors.RED}Sorry, you can't use a hint right now.{Colors.NORMAL}")
         return False
 
     unguessed_letters = [letter for letter in random_word if letter not in guessed_letters]
@@ -91,20 +91,20 @@ def replay():
     Returns True if the player wants to play again, False otherwise.
     """
     while True:
-        replay_choice = input("Do you want to play again? (y/n): ").strip().lower()
+        replay_choice = input(f"{Colors.CYAN}Do you want to play again? ({Colors.GREEN}y{Colors.CYAN}/{Colors.RED}n{Colors.CYAN}):{Colors.NORMAL} ").strip().lower()
         if replay_choice == 'y':
             return True
         elif replay_choice == 'n':
             return False
         else:
-            print("Invalid choice. Please enter 'y' or 'n'.")
+            print(f"{Colors.RED}Invalid choice. Please enter 'y' or 'n'.{Colors.NORMAL}")
 
 
 def show_instructions():
     """
     Displays game instructions and waits for user to press Enter.
     """
-    instructions = """
+    instructions = f"""{Colors.CYAN}
     **Hangman Game Instructions**
 
     Objective:
@@ -127,11 +127,11 @@ def show_instructions():
     - A random unrevealed letter will be shown.
     - Use it wisely! You cannot use it on your last life!
 
-    4. Enjoy the Game!
+    4. Enjoy the Game!{Colors.NORMAL}
     """
 
     print(instructions)
-    input("Press Enter to return to the main menu...")
+    input(f"{Colors.CYAN}Press {Colors.GREEN}Enter{Colors.CYAN} to return to the main menu...{Colors.NORMAL}")
 
 
 def play_game(random_word, guessed_word, max_attempts):
@@ -212,22 +212,22 @@ def main():
     """
     hangman_title()
     while True:
-        print("\nMenu:")
-        print("1. Play")
-        print("2. Instructions")
-        print("3. Quit")
+        print(f"{Colors.CYAN}\nMenu:{Colors.NORMAL}")
+        print(f"{Colors.GREEN}1. Play{Colors.NORMAL}")
+        print(f"{Colors.ORANGE}2. Instructions{Colors.NORMAL}")
+        print(f"{Colors.RED}3. Quit{Colors.NORMAL}")
 
-        choice = input("Enter your choice (1/2/3): ")
+        choice = input(f"{Colors.CYAN}Enter your choice ({Colors.GREEN}1{Colors.CYAN}/{Colors.ORANGE}2{Colors.CYAN}/{Colors.RED}3{Colors.CYAN}): {Colors.NORMAL}")
 
         if choice == '1':
-            print("\nDifficulty Levels:")
-            print("e - Easy")
-            print("m - Medium")
-            print("h - Hard")
-            difficulty = input("Choose a difficulty (e/m/h): ").lower()
+            print(f"{Colors.CYAN}\nDifficulty Levels:")
+            print(f"{Colors.GREEN}e - Easy{Colors.NORMAL}")
+            print(f"{Colors.ORANGE}m - Medium{Colors.NORMAL}")
+            print(f"{Colors.RED}h - Hard{Colors.NORMAL}")
+            difficulty = input(f"{Colors.CYAN}Choose a difficulty ({Colors.GREEN}e{Colors.CYAN}/{Colors.ORANGE}m{Colors.CYAN}/{Colors.RED}h{Colors.CYAN}): {Colors.NORMAL}").lower()
 
             if difficulty not in ['e', 'm', 'h']:
-                print("Invalid difficulty level. Please choose from e, m, or h.")
+                print(f"{Colors.RED}Invalid difficulty level. Please choose from e, m, or h{Colors.NORMAL}")
                 continue
 
             if difficulty == 'e':
@@ -244,7 +244,7 @@ def main():
         elif choice == '3':
             break
         else:
-            print("Invalid choice. Please enter 1, 2, or 3.")
+            print(f"{Colors.RED}Invalid choice. Please enter 1, 2, or 3.{Colors.NORMAL}")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,6 @@
 
 class Colors:
+    CYAN = '\033[96m'
     RED = '\033[91m'
     GREEN = '\033[92m'
     ORANGE = '\033[1;33m'
