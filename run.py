@@ -149,7 +149,7 @@ def play_game(random_word, guessed_word, max_attempts, difficulty):
     current_attempts = 0
     guessed_letters = set()
     hint_used = False
-    lives = max_attempts
+    lives = {max_attempts - current_attempts}
 
     while current_attempts < max_attempts:
         print(' '.join(guessed_word))
