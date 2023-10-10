@@ -206,7 +206,10 @@ def play_game(random_word, guessed_word, max_attempts, difficulty):
     replay_choice = replay()
     if replay_choice:
         random_word, guessed_word, max_attempts, difficulty = initialize_game(difficulty)
-        return True
+        current_attempts = 0
+        guessed_letters = set()
+        hint_used = False
+        continue
     else:
         return False
 
