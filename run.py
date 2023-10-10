@@ -5,6 +5,7 @@ import json
 from graphics import hangman_title, win_title, lose_title, draw_hangman
 from google.oauth2.service_account import Credentials
 
+
 def get_random_word():
     """
     Retrieves a random word from the Google Sheets.
@@ -33,13 +34,15 @@ def get_random_word():
 
     return random_word
 
+
 def initialize_game(difficulty):
     """
     Initializes the Hangman game.
 
     Argument = The difficulty level (easy, medium, or hard) chosen by the user.
 
-    Returns A tuple containing the random word, the initial guessed word, and max_attempts based from the difficulty.
+    Returns A tuple containing the random word, the initial guessed word,
+    and max_attempts based from the difficulty.
     """
     random_word = get_random_word()
 
@@ -56,13 +59,15 @@ def initialize_game(difficulty):
 
     return random_word, guessed_word, max_attempts
 
+
 def hint(random_word, guessed_word, guessed_letters, max_attempts, hint_used):
     """
     Randomly selects an unguessed letter from the word to provide as a hint.
-    If a hint is provided, the corresponding letter is revealed in the guessed word.
+    If a hint is provided, the corresponding letter is revealed in the guessed
+    word.
 
-    A hint costs a life and can only be used if there is more than 1 letter remaining and
-    if the hint hasn't been used before in the game.
+    A hint costs a life and can only be used if there is more than 1 letter
+    remaining and if the hint hasn't been used before in the game.
     """
     if hint_used or guessed_word.count('_') <= 1:
         print("Sorry, you can't use a hint right now.")
@@ -78,6 +83,7 @@ def hint(random_word, guessed_word, guessed_letters, max_attempts, hint_used):
     guessed_letters.add(hint_letter)
     return True
 
+
 def replay():
     """
     Asks the player if they want to play again, only allowing 'y' or 'n'.
@@ -92,6 +98,7 @@ def replay():
             return False
         else:
             print("Invalid choice. Please enter 'y' or 'n'.")
+
 
 def show_instructions():
     """
@@ -125,6 +132,7 @@ def show_instructions():
 
     print(instructions)
     input("Press Enter to return to the main menu...")
+
 
 def play_game(random_word, guessed_word, max_attempts):
     """
@@ -192,6 +200,7 @@ def play_game(random_word, guessed_word, max_attempts):
     draw_hangman(current_attempts)
     return replay()
 
+
 def main():
     """
     The main function that manages the execution of the Hangman game.
@@ -233,9 +242,10 @@ def main():
         elif choice == '2':
             show_instructions()
         elif choice == '3':
-            break  
+            break
         else:
             print("Invalid choice. Please enter 1, 2, or 3.")
+
 
 if __name__ == "__main__":
     main()
