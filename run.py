@@ -184,7 +184,6 @@ def play_game(random_word, guessed_word, max_attempts, difficulty):
                 print(f"{Colors.GREEN}Well done! You guessed a correct letter.{Colors.NORMAL}")
             else:
                 current_attempts += 1
-                lives -= 1
                 print(Colors.RED + f"Incorrect guess! Attempts remaining: {max_attempts - current_attempts}" + Colors.NORMAL)
 
             guessed_letters.add(guess)
