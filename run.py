@@ -190,12 +190,25 @@ def play_game(random_word, guessed_word, max_attempts, difficulty):
             if '_' not in guessed_word:
                 win_title()
                 print(Colors.GREEN + f"Congratulations! You guessed the word: {''.join(guessed_word)}" + Colors.NORMAL)
-                return replay()
+                replay_choice = replay()
+                if replay_choice:
+                    random_word, guessed_word, max_attempts, difficulty = initialize_game(difficulty)
+                    current_attempts = 0
+                    guessed_letters = set()
+                    hint_used = False
+                    continue
+                else:
+                    return False
 
     lose_title()
     print(Colors.RED + f"Sorry! The word was: {random_word}" + Colors.NORMAL)
     draw_hangman(current_attempts, difficulty)
-    return replay()
+    replay_choice = replay()
+    if replay_choice:
+        random_word, guessed_word, max_attempts, difficulty = initialize_game(difficulty)
+        return True
+    else:
+        return False
 
 
 def main():
