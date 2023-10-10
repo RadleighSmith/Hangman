@@ -13,10 +13,20 @@ Welcome to a classic game of Hangman, a text-based Python game that challenges y
 
 [Testing]()
 
-[Languages]()
+[Bugs]()
 
 [Deployment]()
 
-[Media]()
-
 [Credits]()
+
+## Planning
+
+## Features
+
+## Testing
+
+## Bugs
+
+## Deployment
+
+## Credits
