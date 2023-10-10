@@ -2,7 +2,7 @@ import gspread
 import random
 import os
 import json
-from graphics import hangman_title, win_title, lose_title, draw_hangman
+from graphics import hangman_title, win_title, lose_title, draw_hangman, Colors
 from google.oauth2.service_account import Credentials
 
 
@@ -186,17 +186,17 @@ def play_game(random_word, guessed_word, max_attempts):
             else:
                 current_attempts += 1
                 lives -= 1
-                print(f"Incorrect guess! Attempts remaining: {max_attempts - current_attempts}")
+                print(Colors.RED + f"Incorrect guess! Attempts remaining: {max_attempts - current_attempts}" + Colors.NORMAL)
 
             guessed_letters.add(guess)
 
             if '_' not in guessed_word:
                 win_title()
-                print(f"Congratulations! You guessed the word: {''.join(guessed_word)}")
+                print(Colors.GREEN + f"Congratulations! You guessed the word: {''.join(guessed_word)}" + Colors.NORMAL)
                 return replay()
 
     lose_title()
-    print(f"Sorry! The word was: {random_word}")
+    print(Colors.RED + f"Sorry! The word was: {random_word}" + Colors.NORMAL)
     draw_hangman(current_attempts)
     return replay()
 
