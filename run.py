@@ -60,8 +60,7 @@ def initialize_game(difficulty):
     return random_word, guessed_word, max_attempts, difficulty
 
 
-
-def hint(random_word, guessed_word, guessed_letters, max_attempts, hint_used):
+def hint(random_word, guessed_word, guessed_letters, hint_used, lives):
     """
     Randomly selects an unguessed letter from the word to provide as a hint.
     If a hint is provided, the corresponding letter is revealed in the guessed
@@ -82,6 +81,7 @@ def hint(random_word, guessed_word, guessed_letters, max_attempts, hint_used):
             guessed_word[i] = hint_letter
 
     guessed_letters.add(hint_letter)
+    lives -= 1
     return True
 
 
@@ -164,7 +164,7 @@ def play_game(random_word, guessed_word, max_attempts, difficulty):
             guess = input(f"{Colors.CYAN}Enter a letter: {Colors.NORMAL}").lower()
 
         if guess == 'hint':
-            hint_successful = hint(random_word, guessed_word, guessed_letters, hint_used, lives)
+            hint_successful = hint(random_word, guessed_word, guessed_letters, max_attempts, hint_used, lives)
             if hint_successful:
                 hint_used = True
                 lives -= 1
