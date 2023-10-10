@@ -80,7 +80,7 @@ def hint(random_word, guessed_word, guessed_letters, hint_used, max_attempts):
     guessed_word[hint_index] = hint_letter
     guessed_letters.add(hint_letter)
 
-    return guessed_word, max_attempts - 1
+    return guessed_word, max_attempts
 
 
 def replay():
