@@ -163,10 +163,11 @@ def play_game(random_word, guessed_word, max_attempts, difficulty):
             guess = input(f"{Colors.CYAN}Enter a letter: {Colors.NORMAL}").lower()
 
         if guess == 'hint':
-            guessed_word, max_attempts = hint(random_word, guessed_word, guessed_letters, hint_used, max_attempts)
-            if guessed_word:
+            hint_result, max_attempts = hint(random_word, guessed_word, guessed_letters, hint_used, max_attempts)
+            if hint_result:
                 hint_used = True
                 current_attempts += 1
+                guessed_word = hint_result
 
         else:
             if len(guess) != 1 or not guess.isalpha():
