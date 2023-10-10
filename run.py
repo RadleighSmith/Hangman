@@ -57,7 +57,8 @@ def initialize_game(difficulty):
     elif difficulty == 'hard':
         max_attempts = 4
 
-    return random_word, guessed_word, max_attempts
+    return random_word, guessed_word, max_attempts, difficulty
+
 
 
 def hint(random_word, guessed_word, guessed_letters, max_attempts, hint_used):
@@ -134,7 +135,7 @@ def show_instructions():
     input(f"{Colors.CYAN}Press {Colors.GREEN}Enter{Colors.CYAN} to return to the main menu...{Colors.NORMAL}")
 
 
-def play_game(random_word, guessed_word, max_attempts):
+def play_game(random_word, guessed_word, max_attempts, difficulty):
     """
     Plays a round of the game.
 
@@ -155,7 +156,7 @@ def play_game(random_word, guessed_word, max_attempts):
         print(f"{Colors.CYAN}Guessed Letters: {' '.join(guessed_letters)}{Colors.NORMAL}")
         print(f"{Colors.CYAN}Lives Remaining:{Colors.RED} {lives}{Colors.NORMAL}")
 
-        draw_hangman(current_attempts)
+        draw_hangman(current_attempts, difficulty)
 
         if not hint_used:
             guess = input(f"{Colors.CYAN}Enter a letter (or type 'hint' for a hint): {Colors.NORMAL}").lower()
@@ -198,7 +199,7 @@ def play_game(random_word, guessed_word, max_attempts):
 
     lose_title()
     print(Colors.RED + f"Sorry! The word was: {random_word}" + Colors.NORMAL)
-    draw_hangman(current_attempts)
+    draw_hangman(current_attempts, difficulty)
     return replay()
 
 
@@ -238,8 +239,8 @@ def main():
             else:
                 difficulty = 'hard'
 
-            random_word, guessed_word, max_attempts = initialize_game(difficulty)
-            play_game(random_word, guessed_word, max_attempts)
+            random_word, guessed_word, max_attempts, difficulty = initialize_game(difficulty)
+            play_game(random_word, guessed_word, max_attempts, difficulty)
         elif choice == '2':
             show_instructions()
         elif choice == '3':
