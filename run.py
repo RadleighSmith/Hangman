@@ -19,7 +19,14 @@ def get_random_word():
     """
     Retrieves a random word from the Google Sheets.
 
-    Returns a random word in string format.
+    Returns:
+    str: A random word.
+
+    Raises:
+    gspread.exceptions.APIError: If an error occurs accessing
+    Google Sheets API.
+
+    Exception: For any other unexpected error.
     """
 
     try:
@@ -41,10 +48,12 @@ def initialize_game(difficulty):
     """
     Initializes the Hangman game.
 
-    Argument = The difficulty level (easy, medium, or hard) chosen by the user.
+    Args:
+    difficulty (str): The difficulty level (easy, medium, or hard).
 
-    Returns A tuple containing the random word, the initial guessed word,
-    and max_attempts based from the difficulty.
+    Returns:
+    tuple: A tuple containing the random word, the initial guessed word,
+    max attempts, and difficulty.
     """
     random_word = get_random_word()
 
@@ -65,6 +74,9 @@ def initialize_game(difficulty):
 def main_menu():
     """
     Displays the main menu options and returns the user's choice.
+
+    Returns:
+    str: The user's choice.
     """
     print(f"{Colors.CYAN}\nMenu:{Colors.NORMAL}")
     print(f"{Colors.GREEN}1. Play{Colors.NORMAL}")
@@ -82,6 +94,9 @@ def choose_difficulty():
     """
     Prompts the user to choose a difficulty level
     and returns the selected difficulty.
+
+    Returns:
+    str: The selected difficulty.
     """
     print(f"{Colors.CYAN}\nDifficulty Levels:")
     print(f"{Colors.GREEN}e - Easy{Colors.NORMAL}")
@@ -194,12 +209,15 @@ def play_game(random_word, guessed_word, max_attempts, difficulty):
     """
     Plays a round of the game.
 
-    Arguments:
-        random_word (string): The word to guess.
-        guessed_word (list): The word with guessed letters.
-        max_attempts (interger): The maximum number of attempts.
+    Args:
+    random_word (str): The word to guess.
+    guessed_word (list): The word with guessed letters.
+    max_attempts (int): The maximum number of attempts.
+    difficulty (str): The difficulty level (easy, medium, or hard).
 
-    Returns True if the game is won, otherwise returns false.
+    Returns:
+    bool: True if the game is won, otherwise False.
+
     """
     current_attempts = 0
     guessed_letters = set()
