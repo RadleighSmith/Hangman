@@ -22,12 +22,19 @@ def get_random_word():
     Returns a random word in string format.
     """
     
-    SHEET = GSPREAD_CLIENT.open('hangman_words').sheet1
+    try:
+        SHEET = GSPREAD_CLIENT.open('hangman_words').sheet1
 
-    words = SHEET.col_values(1)
-    random_word = random.choice(words)
+        words = SHEET.col_values(1)
+        random_word = random.choice(words)
 
-    return random_word
+        return random_word
+
+    except gspread.exceptions.APIError as e:
+        print(f"Uh Oh! An error occurred accessing Google Sheets API: {e}")
+
+    except Exception as e:
+        print(f"Opps! An error occurred: {e}")
 
 
 def initialize_game(difficulty):
