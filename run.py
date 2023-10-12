@@ -60,6 +60,77 @@ def initialize_game(difficulty):
     return random_word, guessed_word, max_attempts, difficulty
 
 
+def main_menu():
+    """
+    Displays the main menu options and returns the user's choice.
+    """
+    print(f"{Colors.CYAN}\nMenu:{Colors.NORMAL}")
+    print(f"{Colors.GREEN}1. Play{Colors.NORMAL}")
+    print(f"{Colors.ORANGE}2. Instructions{Colors.NORMAL}")
+    print(f"{Colors.RED}3. Quit{Colors.NORMAL}")
+
+    choice = input(f"{Colors.CYAN}Enter your choice ({Colors.GREEN}1{Colors.CYAN}/{Colors.ORANGE}2{Colors.CYAN}/{Colors.RED}3{Colors.CYAN}): {Colors.NORMAL}")
+    return choice
+
+def choose_difficulty():
+    """
+    Prompts the user to choose a difficulty level and returns the selected difficulty.
+    """
+    print(f"{Colors.CYAN}\nDifficulty Levels:")
+    print(f"{Colors.GREEN}e - Easy{Colors.NORMAL}")
+    print(f"{Colors.ORANGE}m - Medium{Colors.NORMAL}")
+    print(f"{Colors.RED}h - Hard{Colors.NORMAL}")
+    
+    difficulty = input(f"{Colors.CYAN}Choose a difficulty ({Colors.GREEN}e{Colors.CYAN}/{Colors.ORANGE}m{Colors.CYAN}/{Colors.RED}h{Colors.CYAN}): {Colors.NORMAL}").lower()
+
+    if difficulty not in ['e', 'm', 'h']:
+        print(f"{Colors.RED}Invalid difficulty level. Please choose from e, m, or h{Colors.NORMAL}")
+        return choose_difficulty()
+
+    if difficulty == 'e':
+        difficulty = 'easy'
+    elif difficulty == 'm':
+        difficulty = 'medium'
+    else:
+        difficulty = 'hard'
+
+    return difficulty
+
+
+def show_instructions():
+    """
+    Displays game instructions and waits for user to press Enter.
+    """
+    instructions = f"""{Colors.CYAN}
+    **Hangman Game Instructions**
+
+    Objective:
+    Guess the hidden word before you run out of attempts.
+
+    1. Difficulty Levels:
+    - "e" for Easy (6 attempts).
+    - "m" for Medium (5 attempts).
+    - "h" for Hard (4 attempts).
+
+    2. Guessing a Letter:
+    - Enter a letter (a to z) and press Enter.
+    - If the letter is in the word, it will be revealed.
+    - If not, you lose a life.
+    - If you guess the word before losing your lives, YOU WIN!
+    - If you run out of lives, it's GAME OVER!
+
+    3. Hints:
+    - Type "hint" to get a hint; however, this costs a life.
+    - A random unrevealed letter will be shown.
+    - Use it wisely! You cannot use it on your last life!
+
+    4. Enjoy the Game!{Colors.NORMAL}
+    """
+
+    print(instructions)
+    input(f"{Colors.CYAN}Press {Colors.GREEN}Enter{Colors.CYAN} to return to the main menu...{Colors.NORMAL}")
+
+
 def hint(random_word, guessed_word, guessed_letters, hint_used, max_attempts):
     """
     Randomly selects an unguessed letter from the word to provide as a hint.
@@ -97,41 +168,6 @@ def replay():
             return False
         else:
             print(f"{Colors.RED}Invalid choice. Please enter 'y' or 'n'.{Colors.NORMAL}")
-
-
-def show_instructions():
-    """
-    Displays game instructions and waits for user to press Enter.
-    """
-    instructions = f"""{Colors.CYAN}
-    **Hangman Game Instructions**
-
-    Objective:
-    Guess the hidden word before you run out of attempts.
-
-    1. Difficulty Levels:
-    - "e" for Easy (6 attempts).
-    - "m" for Medium (5 attempts).
-    - "h" for Hard (4 attempts).
-
-    2. Guessing a Letter:
-    - Enter a letter (a to z) and press Enter.
-    - If the letter is in the word, it will be revealed.
-    - If not, you lose a life.
-    - If you guess the word before losing your lives, YOU WIN!
-    - If you run out of lives, it's GAME OVER!
-
-    3. Hints:
-    - Type "hint" to get a hint; however, this costs a life.
-    - A random unrevealed letter will be shown.
-    - Use it wisely! You cannot use it on your last life!
-
-    4. Enjoy the Game!{Colors.NORMAL}
-    """
-
-    print(instructions)
-    input(f"{Colors.CYAN}Press {Colors.GREEN}Enter{Colors.CYAN} to return to the main menu...{Colors.NORMAL}")
-
 
 def play_game(random_word, guessed_word, max_attempts, difficulty):
     """
@@ -214,39 +250,13 @@ def play_game(random_word, guessed_word, max_attempts, difficulty):
 def main():
     """
     The main function that manages the execution of the Hangman game.
-
-    This function prompts the user to choose a difficulty level (easy, medium, or hard).
-    It then initializes the game with a random word, sets up the initial guessed word,
-    and establishes the maximum number of attempts based on the chosen difficulty.
-    The game loop is then started.
     """
     hangman_title()
     while True:
-        print(f"{Colors.CYAN}\nMenu:{Colors.NORMAL}")
-        print(f"{Colors.GREEN}1. Play{Colors.NORMAL}")
-        print(f"{Colors.ORANGE}2. Instructions{Colors.NORMAL}")
-        print(f"{Colors.RED}3. Quit{Colors.NORMAL}")
-
-        choice = input(f"{Colors.CYAN}Enter your choice ({Colors.GREEN}1{Colors.CYAN}/{Colors.ORANGE}2{Colors.CYAN}/{Colors.RED}3{Colors.CYAN}): {Colors.NORMAL}")
+        choice = main_menu()
 
         if choice == '1':
-            print(f"{Colors.CYAN}\nDifficulty Levels:")
-            print(f"{Colors.GREEN}e - Easy{Colors.NORMAL}")
-            print(f"{Colors.ORANGE}m - Medium{Colors.NORMAL}")
-            print(f"{Colors.RED}h - Hard{Colors.NORMAL}")
-            difficulty = input(f"{Colors.CYAN}Choose a difficulty ({Colors.GREEN}e{Colors.CYAN}/{Colors.ORANGE}m{Colors.CYAN}/{Colors.RED}h{Colors.CYAN}): {Colors.NORMAL}").lower()
-
-            if difficulty not in ['e', 'm', 'h']:
-                print(f"{Colors.RED}Invalid difficulty level. Please choose from e, m, or h{Colors.NORMAL}")
-                continue
-
-            if difficulty == 'e':
-                difficulty = 'easy'
-            elif difficulty == 'm':
-                difficulty = 'medium'
-            else:
-                difficulty = 'hard'
-
+            difficulty = choose_difficulty()
             random_word, guessed_word, max_attempts, difficulty = initialize_game(difficulty)
             play_result = play_game(random_word, guessed_word, max_attempts, difficulty)
             if not play_result:
@@ -258,7 +268,6 @@ def main():
             break
         else:
             print(f"{Colors.RED}Invalid choice. Please enter 1, 2, or 3.{Colors.NORMAL}")
-
 
 if __name__ == "__main__":
     main()
