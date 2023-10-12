@@ -5,6 +5,15 @@ import json
 from graphics import hangman_title, win_title, lose_title, draw_hangman, Colors
 from google.oauth2.service_account import Credentials
 
+SCOPE = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+]
+
+CREDS = Credentials.from_service_account_file('creds.json')
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 
 def get_random_word():
     """
@@ -12,24 +21,10 @@ def get_random_word():
 
     Returns a random word in string format.
     """
-
-    SCOPE = [
-        "https://www.googleapis.com/auth/spreadsheets",
-        "https://www.googleapis.com/auth/drive.file",
-        "https://www.googleapis.com/auth/drive"
-    ]
-
-    CREDS = Credentials.from_service_account_info(
-        json.loads(os.environ.get('CREDS')),
-        scopes=SCOPE
-    )
-
-    CLIENT = gspread.authorize(CREDS)
-
-    SHEET = CLIENT.open('hangman_words').sheet1
+    
+    SHEET = GSPREAD_CLIENT.open('hangman_words').sheet1
 
     words = SHEET.col_values(1)
-
     random_word = random.choice(words)
 
     return random_word
