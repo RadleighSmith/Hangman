@@ -133,7 +133,7 @@ def show_instructions():
     input(f"{Colors.CYAN}Press {Colors.GREEN}Enter{Colors.CYAN} to return to the main menu...{Colors.NORMAL}")
 
 
-def hint(random_word, guessed_word, guessed_letters, hint_used, max_attempts):
+def hint(random_word, guessed_word, guessed_letters, hint_used, max_attempts, current_attempts):
     """
     Randomly selects an unguessed letter from the word to provide as a hint.
     If a hint is provided, the corresponding letter is revealed in the guessed
@@ -142,7 +142,7 @@ def hint(random_word, guessed_word, guessed_letters, hint_used, max_attempts):
     A hint costs a life and can only be used if there is more than 1 letter
     remaining and if the hint hasn't been used before in the game.
     """
-    if hint_used or guessed_word.count('_') <= 1:
+    if hint_used or max_attempts - current_attempts <= 1:
         print(f"{Colors.RED}Sorry, you can't use a hint right now.{Colors.NORMAL}")
         return False, max_attempts
 
@@ -199,7 +199,7 @@ def play_game(random_word, guessed_word, max_attempts, difficulty):
             guess = input(f"{Colors.CYAN}Enter a letter: {Colors.NORMAL}").lower()
 
         if guess == 'hint':
-            hint_result, max_attempts = hint(random_word, guessed_word, guessed_letters, hint_used, max_attempts)
+            hint_result, max_attempts = hint(random_word, guessed_word, guessed_letters, hint_used, max_attempts, current_attempts)
             if hint_result:
                 hint_used = True
                 current_attempts += 1
