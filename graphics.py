@@ -123,6 +123,6 @@ def draw_hangman(attempts, difficulty):
     if difficulty == 'medium':
         print(HANGMAN_GRAPHICS[1 + attempts])
     elif difficulty == 'hard':
-        print(HANGMAN_GRAPHICS[2 + attempts]) 
+        print(HANGMAN_GRAPHICS[2 + attempts])
     else:
         print(HANGMAN_GRAPHICS[attempts])
