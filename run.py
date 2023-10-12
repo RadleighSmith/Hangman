@@ -1,7 +1,5 @@
 import gspread
 import random
-import os
-import json
 from graphics import hangman_title, win_title, lose_title, draw_hangman, Colors
 from google.oauth2.service_account import Credentials
 
