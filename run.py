@@ -244,7 +244,7 @@ def play_game(random_word, guessed_word, max_attempts, difficulty):
     replay_choice = replay()
     if replay_choice:
         random_word, guessed_word, max_attempts, difficulty = initialize_game(difficulty)
-        return True
+        return play_game(random_word, guessed_word, max_attempts, difficulty)
     else:
         return False
 
