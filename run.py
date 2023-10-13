@@ -232,9 +232,13 @@ def play_game(random_word, guessed_word, max_attempts, difficulty):
 
         draw_hangman(current_attempts, difficulty)
 
-        if not hint_used:
-            guess = input(f"{Colors.CYAN}Enter a letter (or type 'hint' "
-                          f"for a hint): {Colors.NORMAL}").lower()
+        if max_attempts - current_attempts > 1:
+            if not hint_used:
+                guess = input(f"{Colors.CYAN}Enter a letter (or type 'hint' "
+                              f"for a hint): {Colors.NORMAL}").lower()
+            else:
+                guess = input(f"{Colors.CYAN}Enter a letter: "
+                              f"{Colors.NORMAL}").lower()
         else:
             guess = input(f"{Colors.CYAN}Enter a letter: "
                           f"{Colors.NORMAL}").lower()
