@@ -308,6 +308,26 @@ Following the resolution, the game now replays as intended when the user inputs 
 
 At present, there are no known bugs in the application. It has undergone rigorous testing to ensure a smooth user experience.
 
+***
+
+#### Issue: 
+
+Occasional issue where the game would return to previous rounds even after a new game was completed.
+
+#### Resolution:
+
+To address this, we restructured the game loop. Instead of using recursive function calls, we implemented iterative loops. 
+The play_game() function now returns a value indicating whether the user wants to play again. In main(), we established 
+a loop that continues running the game as long as the player chooses to replay.
+
+#### Outcome:
+
+The game no longer returns to previous rounds when replaying.
+
+### Unfixed Bugs
+
+At present, there are no known bugs in the application. It has undergone rigorous testing to ensure a smooth user experience.
+
 ## Deployment
 
 1. Log in or sign up to Heroku and create a new app.
