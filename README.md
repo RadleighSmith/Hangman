@@ -54,6 +54,72 @@ In the planning stages of my Hangman game, [Lucidchart](https://www.lucidchart.c
 
 ## Features
 
+The Hangman game offers a captivating and interactive gaming experience, pulling random words from Google sheets using the Google API. Players have the flexibility to choose from three distinct difficulty levels, tailored to cater to both novices and players looking for a challenge. The game incorporates a hint feature, providing an extra layer of strategy for players looking to maximize their chances of success. With immediate feedback on guesses, users can track their progress and make informed decisions. The visually engaging interface, coupled with clear instructions, ensures an intuitive user experience. Additionally, the game boasts replayability, allowing players to continually challenge their word-guessing skills.
+
+### Main Menu:
+
+<img src = "docs/read-me-images/main menu.png">
+
+The Hangman game's main menu offers three straightforward options: Play, Instructions, and Quit. Players can quickly jump into the game, learn the rules, or exit with ease. The menu features an intuitive design for seamless navigation, ensuring a smooth and enjoyable user experience.
+
+### Instructions page:
+
+<img src = "docs/read-me-images/instructions.png">
+
+The Instructions section provides players with a clear and comprehensive guide on how to play the Hangman game. It covers the rules, objectives, and mechanics, ensuring that players have a solid grasp of the gameplay. This ensures a smooth start and an enjoyable gaming experience.
+
+### Difficulty choice:
+
+<img src = "docs/read-me-images/difficulty-choice.png">
+
+The Difficulty Choice feature in the Hangman game offers three distinct levels—easy, medium, and hard—catering to players of varying skill levels. This allows users to customize their gameplay experience, ensuring both a fun challenge and an engaging experience for all.
+
+### Game Page and loop:
+
+<img src = "docs/read-me-images/game-loop.png">
+
+The game page in the Hangman experience provides players with an immersive interface where they can engage in a word-guessing challenge. Through an intuitive loop, players enter letters to uncover the hidden word. With each guess, the game offers immediate feedback, keeping players informed about their progress. The loop continues until the player either successfully guesses the word or reaches the maximum attempts. This dynamic gameplay loop ensures an interactive and engaging experience throughout the game.
+
+#### Correct Guess:
+
+<img src = "docs/read-me-images/correct-guess.png">
+
+#### Incorrect Guess:
+
+<img src = "docs/read-me-images/incorrect-guess.png">
+
+### Hint Feature
+This Hangman game introduces an intriguing hint feature to aid players. This handy tool allows players to receive a subtle clue, aiding them to uncover the hidden word. Once used or the user is on their last life, the hint prompt is removed from the user interface. Using a hint costs one life, but it cannot be employed on the player's last life otherwise it would end the game.
+
+#### Hint not used:
+
+<img src = "docs/read-me-images/hint-not-used.png">
+
+#### Hint used:
+
+<img src = "docs/read-me-images/hint-used.png">
+
+### Game Win:
+
+<img src = "docs/read-me-images/game-win.png">
+
+When a player successfully guesses the word in the Hangman game, The game promptly celebrates their accomplishment with a winning message and a visual display of the completed word. Players are then presented with the option to replay. This feature encourages replayability,
+
+### Game Lose:
+
+<img src = "docs/read-me-images/game-lose.png">
+
+When a player exhausts their allotted attempts in the Hangman game, the screen displays 'Game Over' with a visual representation of the completed hangman. This signals the conclusion of the current round. However, the game offers players the chance to replay once again encouraging replayability.
+
+### Future Features:
+
+* Leaderboard to track high scores and promote friendly competition among players.
+* Expanded word database with categories or themes for a more diverse word selection.
+* Customizable themes and visuals to personalize the game's appearance.
+* Time-based challenges for players who enjoy a fast-paced gaming experience.
+* Integration with educational resources, providing players with information about the words they encounter.
+
+
 ## Testing
 
 ## Bugs
