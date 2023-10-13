@@ -25,6 +25,7 @@ You can access the live game via the following URL: [Hangman Live Game](https://
     * [*Hint Feature*](#hint-feature)
     * [*Game Win*](#game-win)
     * [*Game Lose*](#game-lose)
+    * [*Visual Cues with Colours*](#visual-cues-with-colours)
     * [*Future Features*](#future-features)
 * [Testing](#testing)
     * [*Python Linter*](#code-institutes-python-linter)
@@ -141,6 +142,16 @@ When a player successfully guesses the word in the Hangman game, The game prompt
 <img src = "docs/read-me-images/game-lose.png">
 
 When a player exhausts their allotted attempts in the Hangman game, the screen displays 'Game Over' with a visual representation of the completed hangman. This signals the conclusion of the current round. However, the game offers players the chance to replay once again encouraging replayability.
+
+### Visual Cues with Colours
+Colours play a subtle yet important role in enhancing the game experience. They provide instant visual cues, allowing players to grasp information without reading every detail.
+
+* Cyan: Main menu options and instructions.
+* Green: Positive feedback, indicating correct guesses.
+* Orange: Key information and selections.
+* Red: Alerts and negative feedback, such as incorrect guesses or game over situations.
+
+These colours work in tandem to enhance the user experience, making it intuitive and engaging.
 
 ### Future Features:
 
