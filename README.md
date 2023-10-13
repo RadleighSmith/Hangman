@@ -10,17 +10,38 @@ You can access the live game via the following URL: [Hangman Live Game](https://
 
 ## Contents
 
-[Planning]()
+* [Planning](#planning)
+    * [*Key Audience Characteristics*](#key-audience-characteristics)
+    * [*Age Group*](#age-group)
+    * [*Accessibility*](#accessibility)
+    * [*User Stories*](#user-stories)
+    * [*Lucid Chart*](#lucid-chart)
+* [Features](#features)
+    * [*Main Menu*](#main-menu)
+    * [*Instructions Page*](#instructions-page)
+    * [*Difficulty Choice*](#difficulty-choice)
+    * [*Game Page and Loop*](#game-page-and-loop)
+    * [*Hint Feature*](#hint-feature)
+    * [*Game Win*](#game-win)
+    * [*Game Lose*](#game-lose)
+    * [*Future Features*](#future-features)
+* [Testing](#testing)
+    * [*Python Linter*](#code-institutes-python-linter)
+    * [*Functional Testing*](#functional-testing)
+        * [*Main Menu*](#main-menu-1)
+        * [*Instructions*](#instructions)
+        * [*Difficulty Section*](#difficulty-section)
+        * [*Game Loop*](#game-loop)
+        * [*Hint Feature*](#hint-feature-1)
+        * [*Game Win Page*](#game-win-page)
+        * [*Game Lose Page*](#game-lose-page)
+* [Bugs](#bugs)
+    * [*Rectified Bugs*](#rectified-bugs)
+    * [*Unfixed Bugs*](#unfixed-bugs)
+* [Deployment](#deployment)
+* [Credits](#credits)
+    * [*Thanks*](#thanks)
 
-[Features]()
-
-[Testing]()
-
-[Bugs]()
-
-[Deployment]()
-
-[Credits]()
 
 ## Planning
 
