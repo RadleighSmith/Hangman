@@ -37,6 +37,7 @@ You can access the live game via the following URL: [Hangman Live Game](https://
         * [*Hint Feature*](#hint-feature-1)
         * [*Game Win Page*](#game-win-page)
         * [*Game Lose Page*](#game-lose-page)
+    * [*User Story Testing*](#user-story-testing)
 * [Bugs](#bugs)
     * [*Rectified Bugs*](#rectified-bugs)
     * [*Unfixed Bugs*](#unfixed-bugs)
@@ -228,6 +229,45 @@ To ensure clean and consistent code, I utilized the PEP8 checker, an invaluable 
 * Checked accuracy of displayed screen and replay options.
 
 These functional tests were conducted meticulously to ensure a seamless and enjoyable gaming experience for players of all levels. By addressing these aspects, we aim to provide a high-quality Hangman game that meets or exceeds user expectations.
+
+### User Story Testing
+
+#### User Story 1:
+As a user, I want the option to choose from different difficulty levels so that I can enjoy playing the game that suits my skill level.
+
+* Validated: We ensured that users can select from three difficulty levels (Easy, Medium, Hard) at the start of the game. Each level offers a distinct challenge to cater to various skill levels.
+***
+#### User Story 2:
+As a user, I expect clear and concise instructions on how to play Hangman, ensuring a smooth start to the game.
+
+* Validated: We verified that the Instructions section of the main menu provides clear and concise guidance on how to begin playing the game. This ensures that users can effortlessly start the game.
+***
+#### User Story 3:
+As a user, I want to receive immediate feedback on my guesses to help me understand which letters I guessed correctly or incorrectly.
+
+* Validated: We confirmed that the game promptly provides feedback after each guess. This feedback informs users whether the letter they guessed was correct or incorrect, aiding them in tracking their progress.
+***
+#### User Story 4:
+As a user, I want the ability to replay the game after completing it, so I can continue to enjoy playing and test my knowledge.
+
+* Validated: We checked that users can select the "Replay" option at the end of a game to initiate a new one with the same settings. This allows users to enjoy the game again without navigating through the main menu.
+***
+#### User Story 5:
+As a user, I look forward to encountering a diverse range of words to guess, ensuring an engaging and comprehensive gaming experience.
+
+* Validated: We utilized a Google Sheets API to fetch a diverse selection of words for the game. This guarantees that users come across a wide variety of words, enhancing the overall gaming experience.
+***
+#### User Story 6:
+As a user, I anticipate an intuitive and user-friendly interface that makes it easy for me to navigate and interact with the game, ultimately enhancing my overall experience.
+
+* Validated: We assessed the game for an intuitive and user-friendly interface. The main menu and game pages are designed to facilitate easy navigation and interaction, providing an improved overall experience.
+***
+#### User Story 7:
+ As a user, I want the option to use a hint to get assistance with guessing the word, understanding that it will come at the cost of a life. This feature should only be available when I have more than one life remaining.
+
+* Validated: We examined the hint feature, ensuring that it only becomes available when the user has more than one life remaining. This provides a balanced gameplay experience, as users can seek assistance without compromising their chances of winning.
+***
+Testing was pivotal in ensuring that our Hangman game aligns with the expectations outlined in the user stories. This meticulous process allowed us to validate every feature, ensuring a smooth and enjoyable gaming experience. It also provided us with the opportunity to identify and rectify any potential issues, ultimately resulting in a polished product that caters to a diverse range of players.
 
 ## Bugs
 
