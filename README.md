@@ -383,7 +383,19 @@ At present, there are no known bugs in the application. It has undergone rigorou
 
 1. Log in or sign up to Heroku and create a new app.
 2. Choose a unique name for your app.
-3. In the settings tab, reveal the config vars if necessary. Input the specified key and its corresponding value as per project requirements.
+3. In the settings tab, reveal the config vars. Then enter a key name and the value you need from the google sheets json file. Which should include the following:
+    * type
+    * project_id
+    * private_key_id
+    * private_key
+    * client_email
+    * client_id
+    * auth_url
+    * token_url
+    * auth_provider_x509_cert_url
+    * client_x509_cert_url
+    * universe_domain
+- Then Click add to save. 
 4. Below that, click "Add buildpack," select Python, and save.
 5. Click "Add buildpack" again, this time select Node.js and save.
 6. Ensure that Python is listed above Node.js in the buildpack order.
