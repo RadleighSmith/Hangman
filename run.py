@@ -40,9 +40,6 @@ def get_random_word():
     except gspread.exceptions.APIError as e:
         print(f"Uh Oh! An error occurred accessing Google Sheets API: {e}")
 
-    except Exception as e:
-        print(f"Opps! An error occurred: {e}")
-
 
 def initialize_game(difficulty):
     """
@@ -281,26 +278,13 @@ def play_game(random_word, guessed_word, max_attempts, difficulty):
                 print(Colors.GREEN + f"Congratulations! You guessed the word: "
                       f"{''.join(guessed_word)}" + Colors.NORMAL)
                 replay_choice = replay()
-                if replay_choice:
-                    random_word, guessed_word, max_attempts, difficulty = \
-                        initialize_game(difficulty)
-                    current_attempts = 0
-                    guessed_letters = set()
-                    hint_used = False
-                    continue
-                else:
-                    return False
+                return replay_choice
 
     lose_title()
     print(Colors.RED + f"Sorry! The word was: {random_word}" + Colors.NORMAL)
     draw_hangman(current_attempts, difficulty)
     replay_choice = replay()
-    if replay_choice:
-        random_word, guessed_word, max_attempts, difficulty = \
-            initialize_game(difficulty)
-        return play_game(random_word, guessed_word, max_attempts, difficulty)
-    else:
-        return False
+    return replay_choice
 
 
 def main():
@@ -313,17 +297,19 @@ def main():
 
         if choice == '1':
             difficulty = choose_difficulty()
-            random_word, guessed_word, max_attempts, difficulty = \
-                initialize_game(difficulty)
-            play_result = play_game(random_word, guessed_word,
-                                    max_attempts, difficulty)
-            if not play_result:
-                break
+            play_again = True
+            while play_again:
+                (random_word,
+                 guessed_word,
+                 max_attempts,
+                 difficulty) = initialize_game(difficulty)
+                play_again = play_game(
+                    random_word, guessed_word, max_attempts, difficulty)
 
         elif choice == '2':
             show_instructions()
         elif choice == '3':
-            break
+            exit()
         else:
             print(f"{Colors.RED}Invalid choice. Please enter"
                   f" 1, 2, or 3.{Colors.NORMAL}")
