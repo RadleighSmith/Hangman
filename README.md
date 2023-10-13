@@ -17,6 +17,7 @@ You can access the live game via the following URL: [Hangman Live Game](https://
     * [*User Stories*](#user-stories)
     * [*Lucid Chart*](#lucid-chart)
 * [Features](#features)
+    * [*Google Sheets Integration*](#google-sheets-integration)
     * [*Main Menu*](#main-menu)
     * [*Instructions Page*](#instructions-page)
     * [*Difficulty Choice*](#difficulty-choice)
@@ -79,6 +80,12 @@ In the planning stages of my Hangman game, [Lucidchart](https://www.lucidchart.c
 ## Features
 
 The Hangman game offers a captivating and interactive gaming experience, pulling random words from Google sheets using the Google API. Players have the flexibility to choose from three distinct difficulty levels, tailored to cater to both novices and players looking for a challenge. The game incorporates a hint feature, providing an extra layer of strategy for players looking to maximize their chances of success. With immediate feedback on guesses, users can track their progress and make informed decisions. The visually engaging interface, coupled with clear instructions, ensures an intuitive user experience. Additionally, the game boasts replayability, allowing players to continually challenge their word-guessing skills.
+
+### Google Sheets Integration
+
+The Hangman game seamlessly integrates with Google Sheets using the Google Sheets API. This allows for dynamic retrieval of words directly from a dedicated Google Sheets document. Making changes in the file will instantly reflect in the game, allowing for quick and hassle-free updates. The integration ensures a diverse and constantly updated pool of words, providing an ever-refreshing challenge for players.
+
+For access to the current list of words used in the game, please refer to the Hangman Words Google Sheets [file](https://docs.google.com/spreadsheets/d/1vZhL5SfARAnLtxxlyjz6Yj8PR_AXVhPR-AZurKXZpH4/edit?usp=sharing).
 
 ### Main Menu:
 
