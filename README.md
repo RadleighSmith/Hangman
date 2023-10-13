@@ -77,7 +77,7 @@ Intuitive user interface suitable for players of all experience levels.
 
 In the planning stages of my Hangman game, [Lucidchart](https://www.lucidchart.com/) emerged as an invaluable tool. Through Lucidchart's intuitive diagramming capabilities, I meticulously mapped out the game's architecture and flow. Starting with wireframes and flowcharts, I visualized the user interface, game mechanics, and navigation pathways. This allowed for a clear, bird's-eye view of the entire project.
 
-<img src= "docs/read-me-images/lucid-chart.jpeg">
+<img src= "docs/read-me-images/lucid-chart.png">
 
 ## Features
 
