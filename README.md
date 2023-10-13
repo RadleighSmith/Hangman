@@ -4,6 +4,9 @@ Welcome to a classic game of Hangman, a text-based Python game that challenges y
 
 <img src = "docs/read-me-images/main menu.png">
 
+***
+
+You can access the live game via the following URL: [Hangman Live Game](https://hangman-python-game-6ca5cecf9916.herokuapp.com/)
 
 ## Contents
 
@@ -189,6 +192,124 @@ These functional tests were conducted meticulously to ensure a seamless and enjo
 
 ## Bugs
 
+### Rectified Bugs:
+
+#### Issue: 
+
+First letter not displaying on the hidden word even if guessed correctly.
+
+#### Resolution:
+
+Modified the code to correctly reveal the first letter when guessed by the user.
+
+#### Outcome:
+
+layers can now see the first letter they guessed, providing a more accurate representation of the hidden word. 
+
+***
+
+#### Issue: 
+
+Missing Definitions for Win and Lose Titles
+
+#### Resolution:
+
+Resolved the issue by importing the win_title and lose_title functions from the graphics page.
+
+#### Outcome:
+
+As a result of the resolution, the win and lose titles now display correctly when called within the game. 
+
+***
+
+#### Issue: 
+
+Missing Graphics Display in Hangman
+
+#### Resolution:
+
+Corrected the issue by ensuring the appropriate prefix "graphics." was added when calling the hangman_graphics functions.
+
+#### Outcome:
+
+Following the resolution, the hangman graphics now display correctly during the game.
+
+***
+
+#### Issue: 
+
+Hints could be used on the final life.
+
+#### Resolution:
+
+Revised the hint function to correctly check if the hint has been used or if there is only one remaining attempt by rectifying the if statement to check if hint used or max_attempts - current attepts <= 1.
+
+#### Outcome:
+
+As a result of the resolution, the hint feature now functions as intended, preventing its use on the final life.
+
+***
+
+#### Issue: 
+
+Hint was using 2 attempts when used.
+
+#### Resolution:
+
+Identified and removed a redundant calculation (max_attempts - 1) in the hint function, as it was already accounted for in the play game function.
+
+#### Outcome:
+
+Following the resolution, the hint feature now accurately consumes only one attempt as intended.
+
+***
+
+#### Issue: 
+
+Incorrect Replay Behavior on Game Loss, returning the user to main menu when inputing 'y'
+
+#### Resolution:
+
+Adjusted the replay function to call the play_game function instead of returning True.
+
+#### Outcome:
+
+Following the resolution, the game now replays as intended when the user inputs 'y' after losing the game.
+
+#### Unfixed Bugs
+
+At present, there are no known bugs in the application. It has undergone rigorous testing to ensure a smooth user experience.
+
 ## Deployment
 
+1. Log in or sign up to Heroku and create a new app.
+2. Choose a unique name for your app.
+3. In the settings tab, reveal the config vars if necessary. Input the specified key and its corresponding value as per project requirements.
+4. Below that, click "Add buildpack," select Python, and save.
+5. Click "Add buildpack" again, this time select Node.js and save.
+6. Ensure that Python is listed above Node.js in the buildpack order.
+7. Go to the deploy tab and select GitHub as the deployment method. Connect your GitHub account.
+8. When prompted, enter the repository you want to deploy, search for it, and once found, connect it.
+9. You can choose to set it for automatic deployment or do it manually.
+    * Automatic deployment will occur every time you push something to GitHub.
+    * Manual deployment gives you control over when the app should be deployed, but remember to do it yourself.
+***
+Once the app is built, Heroku will provide a link to the live web page. 
+* You can access the live game via the following URL: [Hangman Live Game](https://hangman-python-game-6ca5cecf9916.herokuapp.com/)
+* You can access the GitHub Repository via the following URL: [Hangman Repository](https://github.com/RadleighSmith/hangman)
+
 ## Credits
+* [Lucid Charts](https://www.lucidchart.com/) - This tool was used for planning and visualizing the structure of the game.
+* [ASCII Art](https://patorjk.com/software/taag/#p=testall&f=3D%20Diagonal&t=Hangman) - This is where the ASCII Art for the graphics page was obtained.
+* [Stack Overflow](https://stackoverflow.com/questions/287871/how-do-i-print-colored-text-to-the-terminal) - This source provided guidance on how to print colored text to the terminal, which was implemented in the game for visual enhancement.
+* [Hangman Youtube Tutorial](https://www.youtube.com/watch?v=m4nEnsavl6w&t=155s&ab_channel=Kite) - This tutorial served as inspiration for conceptualizing aspects of the Hangman game.
+
+### Thanks
+
+Code Institute
+
+I want to express my heartfelt appreciation to the entire Code Institute team for being a continuous source of inspiration throughout my journey towards becoming a proficient programmer. The impeccably delivered lessons and their unwavering support have been indispensable, and I wholeheartedly value all their efforts.
+
+Richard Wells - Code Institute Mentor
+
+Richard's wealth of expertise and his generous willingness to share his knowledge have played a pivotal role in my journey to become a programmer. His perceptive feedback and unwavering dedication have not only guided me through challenges but have also spurred me on to explore innovative approaches in refining my code. I feel incredibly fortunate to have him  as my mentor, and I truly appreciate all the time and effort he's invested in my growth.
