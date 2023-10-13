@@ -119,8 +119,73 @@ When a player exhausts their allotted attempts in the Hangman game, the screen d
 * Time-based challenges for players who enjoy a fast-paced gaming experience.
 * Integration with educational resources, providing players with information about the words they encounter.
 
-
 ## Testing
+
+### Code Institute's Python Linter:
+
+To ensure clean and consistent code, I utilized the PEP8 checker, an invaluable tool for adhering to Python's style guide. By navigating to [Code Institute's Python Linter](https://pep8ci.herokuapp.com/#), I was able to effortlessly submit my code for examination. The checker meticulously reviewed every aspect of the codebase, from indentation to variable naming. This process not only ensures readability and maintainability but also promotes best practices in Python development. Thanks to the PEP8 checker, my code is not only functional but also adheres to industry-standard coding conventions.
+
+#### Run.py Result
+
+<img src = "docs/read-me-images/run-python-linter.png">
+
+#### Graphics.py Result
+
+<img src = "docs/read-me-images/run-python-linter.png">
+
+### Functional Testing:
+
+#### Main Menu
+
+* Checked each individual option was working as intended:
+    * '1' (Play) takes the user to difficulty section.
+    * '2' (Instuctions) displays the instructions.
+    * '3' (Quit) will quit the game.
+
+* Check that only the correct inputs can be used (1,2,3) or the user will be given the feedback of "Invalid choice. Please enter 1, 2, or 3."
+
+#### Instructions
+
+* Checked if instructions are displayed prominently.
+* Confirmed that pressing "Enter" returns the user back to the main menu.
+
+#### Difficulty Section
+
+* Tested each difficulty level (easy, medium, hard) to validate parameter adjustments.
+* Tested that only (e,m,h) will be accepted or the user will get a prompt saying "Invalid difficulty level. Please choose from e, m, or h"
+* Confirmed corresponding maximum attempts with difficulty levels.
+    * 6 for Easy
+    * 5 for Medium
+    * 4 for Hard
+
+#### Game Loop
+
+* Conducted multiple game sessions to check that the random word feature provides varying words from the google sheet.
+* Checked that "Remaining Lives" will decrease when a incorrect letter is guessed.
+* Ensured that only one letter can be inputted at a time, except when "hint" is entered.
+* Validated that all guessed letters are displayed in the "Guessed Letters" section.
+* Checked that correctly guessed letters are revealed in the hidden word.
+* Verified that after each guess (except when the user has no lives left or the word has been guessed), the user can make another guess.
+* Tested the user feedback system to ensure accurate responses for both correct and incorrect guesses.
+
+#### Hint Feature
+
+* Tested hint feature for providing one clue without errors.
+* Ensured that the hint feature is not usable after use or on final life as this would end the game.
+* Verified using a hint costs one life.
+* Confirmed that once the user has used the hint or is on their final life it removes the prompt.
+
+#### Game Win Page
+
+* Triggered game win condition to evaluate victory screen and options.
+* Checked accuracy of displayed screen and replay options.
+
+#### Game Lose Page
+
+* Triggered game lose condition to evaluate game over screen and options.
+* Checked accuracy of displayed screen and replay options.
+
+These functional tests were conducted meticulously to ensure a seamless and enjoyable gaming experience for players of all levels. By addressing these aspects, we aim to provide a high-quality Hangman game that meets or exceeds user expectations.
 
 ## Bugs
 
