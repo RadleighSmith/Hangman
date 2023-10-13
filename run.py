@@ -1,7 +1,11 @@
 import random
 import gspread
 from google.oauth2.service_account import Credentials
-from graphics import hangman_title, win_title, lose_title, draw_hangman, Colors
+from graphics.graphics import (hangman_title,
+                               win_title,
+                               lose_title,
+                               draw_hangman,
+                               Colors)
 
 
 SCOPE = [
